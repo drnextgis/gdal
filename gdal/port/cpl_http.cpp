@@ -463,6 +463,7 @@ constexpr TupleEnvVarOptionName asAssocEnvVarOptionName[] =
     { "GDAL_HTTP_LOW_SPEED_LIMIT", "LOW_SPEED_LIMIT" },
     { "GDAL_HTTP_USERPWD", "USERPWD" },
     { "GDAL_HTTP_PROXY", "PROXY" },
+    { "GDAL_HTTPS_PROXY", "HTTPS_PROXY" },
     { "GDAL_HTTP_PROXYUSERPWD", "PROXYUSERPWD" },
     { "GDAL_PROXY_AUTH", "PROXYAUTH" },
     { "GDAL_HTTP_NETRC", "NETRC" },

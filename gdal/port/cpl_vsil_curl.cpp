@@ -3984,8 +3984,18 @@ struct curl_slist* VSICurlSetOptions(
 {
     curl_easy_setopt(hCurlHandle, CURLOPT_URL, pszURL);
 
+    CPLStringList oOptions(papszOptions);
+    if ( STARTS_WITH(pszURL, "https"))
+    {
+        const char *pszHttpsProxy = oOptions.FetchNameValue("HTTPS_PROXY");
+        if ( pszHttpsProxy != nullptr )
+        {
+            oOptions.SetNameValue("PROXY", pszHttpsProxy);
+        }
+    }
+
     struct curl_slist* headers = static_cast<struct curl_slist*>(
-        CPLHTTPSetOptions(hCurlHandle, papszOptions));
+        CPLHTTPSetOptions(hCurlHandle, oOptions));
 
 // 7.16
 #if LIBCURL_VERSION_NUM >= 0x071000
